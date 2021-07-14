@@ -1,0 +1,46 @@
+{
+  "name": "asdev-final-project-back-end-",
+  "version": "1.0.0",
+  "description": "Food Delivery",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc:watch": "tsc -w",
+    "launch:watch": "nodemon dist/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/albitrashani/ASDEV-FINAL-PROJECT-back-end-.git"
+  },
+  "author": "Albi Trashani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/albitrashani/ASDEV-FINAL-PROJECT-back-end-/issues"
+  },
+  "homepage": "https://github.com/albitrashani/ASDEV-FINAL-PROJECT-back-end-#readme",
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/body-parser": "^1.19.0",
+    "@types/express": "^4.17.12",
+    "@types/ioredis": "^4.26.4",
+    "@types/node": "^14.17.4",
+    "@types/uuid": "^8.3.0",
+    "nodemon": "^2.0.7",
+    "typescript": "^4.3.4"
+  },
+  "dependencies": {
+    "@types/csvtojson": "^2.0.0",
+    "@types/mongodb": "^3.6.18",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "csv-parser": "^3.0.0",
+    "csvtojson": "^2.0.10",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "ioredis": "^4.27.3",
+    "mongodb": "^3.6.10",
+    "node": "^16.3.0",
+    "uuid": "^8.3.2"
+  }
+}

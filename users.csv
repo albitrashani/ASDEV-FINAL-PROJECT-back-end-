@@ -1,0 +1,5 @@
+name,surname,username,password,status
+Gili,Trashani,gtrashani,$2b$10$aQn4Ft6Xh11uKOz/Eh3rIOD3soeUfUAAb28n4UMMpJn0EOt2IfEMC,user
+Albi,Trashani,atrashani,$2b$10$VNRACglS1uEEuRahcRCcjuuk0xFA92a6YJT4pTU4WbYK/b8Dz4A2S,admin
+Indrit,Trashani,itrashani,$2b$10$BUSQAoJfbzHM4qNs8iBm3eSiSG5ICeFOtMRsoeCta8gzIgWomxcGK,user
+Bledi,Trashani,btrashani,$2b$10$sL56v3xMhSCaV1WPCVJmI.w48fzCnnxf.4lNMiWVOp7C/TPFAo0oK,user
