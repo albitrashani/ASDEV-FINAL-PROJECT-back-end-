@@ -15,5 +15,4 @@ As the last step "user" should run the following commands:
 "npm run tsc:watch" & "npm run launch:watch".
 
 
-Ps:In order for this project to work u need to have installed mongodb and the server should be running.
-Ps:"user" is person who is willing to try this awsome project :D
+Ps:In order for this project to work u need to have installed mongodb and the server should be running. & "user" is person who is willing to try this awsome project :D
