@@ -1,6 +1,6 @@
 # ASDEV-FINAL-PROJECT-back-end-
 
-This will be updated another time!
+This may be updated another time!
 
 ## JUST ONCE Commands:
 
@@ -11,7 +11,7 @@ Also for the purpose of getting every database element, "user" will have to run 
 #### "node onetime.js".
 
 
-## RUNNING COMMANDS:
+## RUNNING Commands:
 
 After running thise commands every database element will be stored and "user" should be ready to start the backend server.
 As the last step "user" should run the following commands:
