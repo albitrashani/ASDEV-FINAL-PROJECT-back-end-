@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express';
+import cors from 'cors';
 import { json } from 'body-parser';
 import { authRouter } from './controllers/auth.controller';
 import { privateRouter } from './controllers/private.controller';
@@ -16,11 +17,12 @@ declare global {
 const port = 3000;
 const app = express();
 
-app.use((req, res, next)=>{
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET, POST,PUT,DELETE');
-  next();
-});
+// app.use((req, res, next)=>{
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Access-Control-Allow-Methods', 'GET, POST,PUT,DELETE');
+//   next();
+// });
+app.use(cors());
 app.use(json());
 app.get('/', async (req: Request, res: Response) => {
   
