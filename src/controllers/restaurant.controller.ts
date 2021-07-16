@@ -2,7 +2,7 @@ import { Request, Response, Router } from 'express';
 import { connect } from 'mongodb';
 import { getStatusFromToken } from '../data/access.dao';
 import { okurl } from '../data/dao';
-import { getRestaurant, insertMenuItem, insertRestaurant } from '../data/restaurant.dao';
+import { getRestaurant, getRestaurantMenu, insertMenuItem, insertRestaurant } from '../data/restaurant.dao';
 const router = Router();
 
 // Add restaurant
@@ -41,16 +41,13 @@ router.post('/add-res', async (req: Request, res: Response, next: Function) => {
 
 router.get('/restaurant/list', async (req:Request,res:Response)  => {
   
-  res.json(await getRestaurant()
-  );
+  res.json(await getRestaurant());
 });
-router.get('/biglietto/:idBiglietto', async (req: Request, res: Response) => {
-  const idBiglietto= req.params.idBiglietto ;
-  const client = await connect(okurl, {useNewUrlParser: true, useUnifiedTopology: true}) ;
-  const result  = await client.db('DB').collection('concerts').find({iDBiglietto:idBiglietto});
-  const data = await result.toArray();
-  const data1 = data[0];
-  res.json({iDBiglietto:data1.iDBiglietto,username:data1.username,price:data1.price});
+
+router.get('/restaurant/menulist/:restaurantname', async (req:Request,res:Response)  => {
+  const restaurantname  = req.params.restaurantname ;
+  
+  res.json(await getRestaurantMenu(restaurantname));
 });
 
 router.post('/add-menuitem', async (req: Request, res: Response, next: Function) => {

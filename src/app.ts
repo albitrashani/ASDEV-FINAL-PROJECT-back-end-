@@ -16,6 +16,11 @@ declare global {
 const port = 3000;
 const app = express();
 
+app.use((req, res, next)=>{
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST,PUT,DELETE');
+  next();
+});
 app.use(json());
 app.get('/', async (req: Request, res: Response) => {
   
