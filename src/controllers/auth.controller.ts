@@ -1,7 +1,7 @@
 import { compare, genSalt, hash } from 'bcrypt';
 import { Request, Response, Router } from 'express';
 import { createTokenForUser } from '../data/access.dao';
-import { getUser, insertUser } from '../data/user.dao';
+import { checkIfExists, getUser, insertUser } from '../data/user.dao';
 
 const router = Router();
 
@@ -29,9 +29,16 @@ router.post('/create-user', async (req: Request, res: Response) => {
   
   if(!name || !surname || !username || !password) {
     return res.status(400).json({
-      message: 'username and password fields are needed'
+      message: 'name,surname,username and password fields are needed'
     })
   }
+  
+  const u=await checkIfExists(username);
+    if(u){
+      return res.json({message: 'this username already exists'});
+    } 
+  
+
   const hashedPass = await hash(password, await genSalt());
   await insertUser({
     name,
