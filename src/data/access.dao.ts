@@ -9,7 +9,9 @@ export async function createTokenForUser(user: User): Promise<string> {
   const token = v4();
 
   const client = await connect(okurl, {useNewUrlParser: true, useUnifiedTopology: true});
-  client.db('FinalProject').collection('token').insertOne({username:user.username,status:user.status,Token:token,EX:60000})
+  //client.db('FinalProject').collection('token').createIndex( { "createdAt": 1 }, { expireAfterSeconds: 3 } );
+
+  client.db('FinalProject').collection('token').insertOne({"createdAt": new Date(),username:user.username,status:user.status,Token:token})
   return token;
 }
 

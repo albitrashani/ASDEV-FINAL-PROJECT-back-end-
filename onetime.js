@@ -20,7 +20,8 @@ csvtojson().fromFile("users.csv").then(csvData => {
       url, { useNewUrlParser: true, useUnifiedTopology: true },
       (err, client) => {
         if (err) throw err;
-        
+        client.db('FinalProject').collection('token').createIndex( { "createdAt": 1 }, { expireAfterSeconds: 3600 } );
+
         client.db("FinalProject").collection("Users").insertMany(csvData, (err, res) => {
             if (err) throw err;
 
