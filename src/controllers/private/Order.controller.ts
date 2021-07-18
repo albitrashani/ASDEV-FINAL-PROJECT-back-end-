@@ -34,12 +34,12 @@ router.post('/order/new', async (req:Request,res:Response) => {
     
     const client = await connect(okurl, {useNewUrlParser: true, useUnifiedTopology: true});
     client.db('FinalProject').collection('Orders').updateOne({_id:orderStatus},{$push: {items:items[0]}})
-    return res.send("Uploaded to db");
+    return res.send({ message: "Uploaded to db"});
   }else{
     const object ={user:username,items:items,status:status} as Order
     const client = await connect(okurl, {useNewUrlParser: true, useUnifiedTopology: true});
     client.db('FinalProject').collection('Orders').insertOne(object)
-    return res.send("Uploaded to db");
+    return res.send({ message: "Uploaded to db"});
   }
 });
 

@@ -19,22 +19,22 @@ export async function getUsernameFromToken(token: string): Promise<string | null
   
   const client = await connect(okurl, {useNewUrlParser: true, useUnifiedTopology: true});
   const result  = await client.db('FinalProject').collection('token').find({Token:token}).toArray();
-  const data = result[0].username;
-  if(!data) {
+  const data = result.length;
+  if(data==0) {
     return null;
   }
-  return data;
+  return result[0].username;
 }
 export async function getStatusFromToken(token: string): Promise<string | null> {
   
   const client = await connect(okurl, {useNewUrlParser: true, useUnifiedTopology: true});
   const result  = await client.db('FinalProject').collection('token').find({Token:token}).toArray();
   //console.log(result);
-  const data = result[0].status;
-  if(!data) {
+  const data = result.length;
+  if(data==0) {
     return null;
   }
-  return data;
+  return result[0].status;
 }
 
 export async function getOrdersStatusFromUsername(x: string): Promise<string | null> {

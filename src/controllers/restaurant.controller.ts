@@ -1,7 +1,5 @@
-import { Request, Response, Router } from 'express';
-import { connect } from 'mongodb';
-import { getStatusFromToken } from '../data/access.dao';
-import { okurl } from '../data/dao';
+import { Request, Response, Router } from 'express'; 
+import { getStatusFromToken } from '../data/access.dao'; 
 import { getRestaurant, getRestaurantMenu, insertMenuItem, insertRestaurant } from '../data/restaurant.dao';
 const router = Router();
 
@@ -45,7 +43,7 @@ router.get('/restaurant/list', async (req:Request,res:Response)  => {
 });
 
 router.get('/restaurant/menulist/:restaurantname', async (req:Request,res:Response)  => {
-  const restaurantname  = req.params.restaurantname ;
+  const restaurantname  = req.params.username ;
   
   res.json(await getRestaurantMenu(restaurantname));
 });
