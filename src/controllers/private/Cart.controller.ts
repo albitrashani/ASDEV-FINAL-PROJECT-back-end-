@@ -25,7 +25,6 @@ router.post('/cart/new', async (req:Request,res:Response) => {
        
       var numri = +nr;
       numri++;
-       console.log(numri.toString());
       const client = await connect(okurl, {useNewUrlParser: true, useUnifiedTopology: true});
       client.db('FinalProject').collection('Cart').updateOne({_id:orderStatus,'items.name':items[0].name},{$set:{"items.$.qty":numri.toString()}})
       return res.send({ message: "Cart updated"});
