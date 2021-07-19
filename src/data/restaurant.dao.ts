@@ -41,7 +41,7 @@ export async function getRestaurant() {
  export async function getRestaurantMenu(y: string) {
   const client = await connect(okurl, {useNewUrlParser: true, useUnifiedTopology: true});
   const result  = await client.db('FinalProject').collection('Menu').find({restaurantname:y}).toArray();
- 
+  
 
   
 return result;

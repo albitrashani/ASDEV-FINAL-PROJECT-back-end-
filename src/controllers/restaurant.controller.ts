@@ -43,7 +43,7 @@ router.get('/restaurant/list', async (req:Request,res:Response)  => {
 });
 
 router.get('/restaurant/menulist/:restaurantname', async (req:Request,res:Response)  => {
-  const restaurantname  = req.params.username ;
+  const restaurantname  = req.params.restaurantname ;
   
   res.json(await getRestaurantMenu(restaurantname));
 });

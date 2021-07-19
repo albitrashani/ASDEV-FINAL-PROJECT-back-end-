@@ -15,7 +15,7 @@ export async function createTokenForUser(user: User): Promise<string> {
   return token;
 }
 
-export async function getUsernameFromToken(token: string): Promise<string | null> {
+export async function getUsernameFromToken(token: any): Promise<string | null> {
   
   const client = await connect(okurl, {useNewUrlParser: true, useUnifiedTopology: true});
   const result  = await client.db('FinalProject').collection('token').find({Token:token}).toArray();
@@ -25,7 +25,7 @@ export async function getUsernameFromToken(token: string): Promise<string | null
   }
   return result[0].username;
 }
-export async function getStatusFromToken(token: string): Promise<string | null> {
+export async function getStatusFromToken(token: any) {
   
   const client = await connect(okurl, {useNewUrlParser: true, useUnifiedTopology: true});
   const result  = await client.db('FinalProject').collection('token').find({Token:token}).toArray();
@@ -45,6 +45,30 @@ export async function getOrdersStatusFromUsername(x: string): Promise<string | n
     return null;
   }else{
     const data = result[0]._id;
+    return data;
+  }
+}
+
+export async function getCartStatusFromUsername(x: string): Promise<string | null> {
+   const client = await connect(okurl, {useNewUrlParser: true, useUnifiedTopology: true});
+  const result  = await client.db('FinalProject').collection('Cart').find({user:x}).toArray();
+  if(result.length==0) {
+    return null;
+  }else{
+    const data = result[0]._id;
+    return data;
+  }
+}
+
+export async function findCartFromUsername(x: string, y:string) {
+  const client = await connect(okurl, {useNewUrlParser: true, useUnifiedTopology: true});
+  const result  = await client.db('FinalProject').collection('Cart').find({user:x,'items.name':y}).toArray();
+  if(result.length==0) {
+   
+    return null;
+    
+  }else{
+    const data = result[0].items[0].qty;
     return data;
   }
 }
