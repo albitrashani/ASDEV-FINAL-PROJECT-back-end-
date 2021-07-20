@@ -1,5 +1,5 @@
 import {  Request, Response, Router } from 'express';
-import { connect } from 'mongodb';
+import { connect, ObjectId } from 'mongodb';
 import {   getOrdersStatusFromUsername, getStatusFromToken, getUsernameFromToken } from '../../data/access.dao';
 import { okurl } from '../../data/dao';
 import Order from '../../data/models/order.model';
@@ -59,24 +59,24 @@ router.post('/order/new', async (req:Request,res:Response) => {
     })
   }
  
-    const object ={user:username,items:items,status:status,'total amount':amount} as Order
+    const object ={user:username,items:items,status:status,totalamount:amount} as Order
     const client = await connect(okurl, {useNewUrlParser: true, useUnifiedTopology: true});
     client.db('FinalProject').collection('Orders').insertOne(object)
     return res.send({ message: "Uploaded to db"});
   
 });
 
-router.put('/order/:username', async (req:Request,res:Response) => {
-  const username  = req.params.username ;
-  const { status } = req.body;
+router.put('/order/:id', async (req:Request,res:Response) => {
+  const id  = req.params.id ;
+  //const { status } = req.body;
  
 
-  const orderStatus = await getOrdersStatusFromUsername(username);
-  
+  const orderStatus = await getOrdersStatusFromUsername(id);
+ // console.log(orderStatus)
   if(orderStatus!==null){
-    
+    const id1=new ObjectId(orderStatus)
     const client =await connect(okurl,  {useNewUrlParser: true, useUnifiedTopology: true});
-    client.db('FinalProject').collection('Orders').updateOne({_id:orderStatus},{$set: {status:status}})
+    client.db('FinalProject').collection('Orders').updateOne({_id:id1},{$set: {status:"delivered"}})
     return res.json(true);
   }else{
     
