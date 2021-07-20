@@ -1,5 +1,5 @@
 import { v4 } from 'uuid';
-import { connect } from 'mongodb';
+import { connect,  ObjectId } from 'mongodb';
 import { okurl } from './dao';
 import User from './models/user.model';
 
@@ -37,10 +37,11 @@ export async function getStatusFromToken(token: any) {
   return result[0].status;
 }
 
-export async function getOrdersStatusFromUsername(x: string): Promise<string | null> {
-  
+export async function getOrdersStatusFromUsername(x: any): Promise<any | null> {
   const client = await connect(okurl, {useNewUrlParser: true, useUnifiedTopology: true});
-  const result  = await client.db('FinalProject').collection('Orders').find({user:x,status:"processing"}).toArray();
+  const id1=new ObjectId(x);
+  const result  = await client.db('FinalProject').collection('Orders').find({_id:id1,status:'processing'}).toArray();
+  //console.log(result)
   if(result.length==0) {
     return null;
   }else{
