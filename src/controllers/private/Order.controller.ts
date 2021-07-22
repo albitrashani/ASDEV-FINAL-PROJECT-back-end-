@@ -28,7 +28,7 @@ router.get('/order/list', async (req:Request,res:Response)  => {
   }
 });
   
-//get order with matchin username
+//get order with matching username
 router.get('/order/:username', async (req: Request, res: Response) => {
   const username= req.params.username ;
   const client = await connect(okurl, {useNewUrlParser: true, useUnifiedTopology: true}) ;

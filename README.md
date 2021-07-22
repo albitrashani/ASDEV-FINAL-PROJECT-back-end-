@@ -13,7 +13,7 @@ Also for the purpose of getting every database element, "user" will have to run 
 
 ## RUNNING Commands:
 
-After running thise commands every database element will be stored and "user" should be ready to start the backend server.
+After running these commands every database element will be stored and "user" should be ready to start the backend server.
 As the last step "user" should run the following commands:
 #### "npm run tsc:watch" & "npm run launch:watch".
 

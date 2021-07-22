@@ -22,7 +22,7 @@ csvtojson().fromFile("users.csv").then(csvData => {
         if (err) throw err;
         client.db('FinalProject').collection('token').createIndex( { "createdAt": 1 }, { expireAfterSeconds: 3600 } );
 
-        client.db("FinalProject").collection("Users").insertMany(csvData, (err, res) => {
+        client.db("FinalProject").collection("users").insertMany(csvData, (err, res) => {
             if (err) throw err;
 
             });

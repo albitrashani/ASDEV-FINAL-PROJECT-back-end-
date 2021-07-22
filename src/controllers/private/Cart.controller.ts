@@ -79,6 +79,21 @@ router.delete('/delete/:username', async (req:Request,res:Response)  => {
 
 });
 
+router.put('/deleteitem/:username', async (req:Request,res:Response)  => {
+ 
+  const { item } = req.body;
+  const username  = req.params.username ;
+  const client =await connect(okurl,  {useNewUrlParser: true, useUnifiedTopology: true});
+  client.db('FinalProject').collection('Cart').updateOne({user:username},{$pull:{ items:{name:item}}})
+  const len  =await client.db('FinalProject').collection('Cart').find({user:username}).toArray();
+  const data= len[0].items.length;
+  if(data==0){
+     client.db('FinalProject').collection('Cart').deleteOne({user:username})
+  }
+  return res.json('item deleted');
+
+});
+
 
 
 export {

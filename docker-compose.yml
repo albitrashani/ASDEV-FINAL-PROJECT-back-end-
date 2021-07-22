@@ -1,27 +1,18 @@
-version: "3.7"
-
+version: '3.7'
 services:
-  app:
-    image: node:12-alpine
-    command: sh -c "yarn install && yarn run dev"
+  nodejs-api:
+    build:
+      context: ./
+      dockerfile: Dockerfile
     ports:
-      - 3000:3000
-    working_dir: /app
+      - "3000:3000"
+    container_name: asdev-final-project-back-end-
+    links:
+      - mongo-db
+  mongo-db:
+    image: mongo
+    ports:
+      - "27017:27017"
+    container_name: mongo-db
     volumes:
-      - ./:/app
-    environment:
-      MYSQL_HOST: mysql
-      MYSQL_USER: root
-      MYSQL_PASSWORD: secret
-      MYSQL_DB: todos
-
-  mysql:
-    image: mysql:5.7
-    volumes:
-      - todo-mysql-data:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: secret
-      MYSQL_DATABASE: todos
-
-volumes:
-  todo-mysql-data:
+      - ./db/:/data/db

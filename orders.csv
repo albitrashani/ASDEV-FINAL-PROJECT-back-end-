@@ -1,5 +1,6 @@
-user,items,status
-atrashani,[{"name":"Pizza 1","qty":"1"},{"name":"Pizza 2","qty":"1"},{"name":"Pizza 3","qty":"1"}],delivered	
-atrashani,[{"name":"Pizza 3","qty":"1"},{"name":"Pizza 3","qty":"1"}],processing
-gtrashani,[{"name":"Pizza 1","qty":"1"},{"name":"Pizza 2","qty":"1"},{"name":"Pizza 4","qty":"1"}],processing	
-btrashani,[{"name":"Pizza 2","qty":"1"}],delivered
+items,status,totalamount,user
+"[{""name"":""Pizza 1"",""qty"":""1"",""price"":""3""},{""name"":""Pizza 2"",""qty"":""1"",""price"":""4""},{""name"":""Pizza 3"",""qty"":""1"",""price"":""5""},{""name"":""Pizza 5"",""qty"":""1"",""price"":""5""},{""name"":""menu3"",""qty"":""1"",""price"":""9""}]",delivered,26,atrashani
+"[{""name"":""menu3"",""qty"":""1"",""price"":""9""},{""name"":""Pizza 1"",""qty"":""1"",""price"":""3""},{""name"":""Pizza 2"",""qty"":""1"",""price"":""4""}]",delivered,16,atrashani
+"[{""name"":""Pizza 1"",""qty"":""1"",""price"":""3""}]",delivered,3,btrashani
+"[{""name"":""Pizza 2"",""qty"":""3"",""price"":""4""},{""name"":""Pizza 3"",""qty"":""4"",""price"":""5""},{""name"":""Pizza 1"",""qty"":""1"",""price"":""3""}]",processing,35,btrashani
+"[{""name"":""Pizza 1"",""qty"":""1"",""price"":""3""}]",processing,3,btrashani
